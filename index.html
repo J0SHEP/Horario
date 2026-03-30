@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/svg+xml" href="hour.svg">
+  <title>Horario Final – Grupo B</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<button class="theme-toggle" id="themeBtn">☀️ Modo diurno</button>
+
+<div class="container">
+
+  <header>
+    <div class="label-tag">Ciclo Académico 2026</div>
+    <h1>Horario <span>Grupo B</span></h1>
+    <p class="subtitle">Lunes a Viernes &nbsp;·&nbsp; 07:00 – 01:00 hrs</p>
+  </header>
+
+  <div class="today-banner" id="todayBanner"></div>
+<br><br>
+  <nav class="day-nav">
+    <button class="day-pill active" data-day="all">Todos</button>
+    <button class="day-pill" data-day="lunes">Lunes</button>
+    <button class="day-pill" data-day="martes">Martes</button>
+    <button class="day-pill" data-day="miercoles">Miércoles</button>
+    <button class="day-pill" data-day="jueves">Jueves</button>
+    <button class="day-pill" data-day="viernes">Viernes</button>
+  </nav>
+
+  <!-- LUNES -->
+  <section class="day-section lunes" data-day="lunes">
+    <div class="day-header">
+      <div class="day-dot"></div>
+      <span class="day-name">Lunes</span>
+      <div class="day-line"></div>
+      <span class="class-count">2 clases</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          09:00 – 11:00
+        </div>
+        <div class="card-course">Comunicación oral y escrita</div>
+        <div class="card-meta">
+          <span class="badge badge-practica">✦ Práctica</span>
+          <span class="badge badge-aula">T-204</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 – 13:00
+        </div>
+        <div class="card-course">Psicología y desarrollo humano</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-204</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARTES -->
+  <section class="day-section martes" data-day="martes">
+    <div class="day-header">
+      <div class="day-dot"></div>
+      <span class="day-name">Martes</span>
+      <div class="day-line"></div>
+      <span class="class-count">3 clases</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          07:00 – 09:00
+        </div>
+        <div class="card-course">Matemática básica</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          09:00 – 11:00
+        </div>
+        <div class="card-course">Metodología del trabajo universitario</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 – 13:00
+        </div>
+        <div class="card-course">Educación en salud sexual y reproductiva</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MIÉRCOLES -->
+  <section class="day-section miercoles" data-day="miercoles">
+    <div class="day-header">
+      <div class="day-dot"></div>
+      <span class="day-name">Miércoles</span>
+      <div class="day-line"></div>
+      <span class="class-count">3 clases</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          07:00 – 09:00
+        </div>
+        <div class="card-course">Educación en salud sexual y reproductiva</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          09:00 – 11:00
+        </div>
+        <div class="card-course">Matemática básica</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 – 13:00
+        </div>
+        <div class="card-course">Comunicación oral y escrita</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JUEVES -->
+  <section class="day-section jueves" data-day="jueves">
+    <div class="day-header">
+      <div class="day-dot"></div>
+      <span class="day-name">Jueves</span>
+      <div class="day-line"></div>
+      <span class="class-count">3 clases</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          07:00 – 09:00
+        </div>
+        <div class="card-course">Matemática básica</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          09:00 – 11:00
+        </div>
+        <div class="card-course">Educación en salud sexual y reproductiva</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 – 13:00
+        </div>
+        <div class="card-course">Comunicación oral y escrita</div>
+        <div class="card-meta">
+          <span class="badge badge-practica">✦ Práctica</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIERNES -->
+  <section class="day-section viernes" data-day="viernes">
+    <div class="day-header">
+      <div class="day-dot"></div>
+      <span class="day-name">Viernes</span>
+      <div class="day-line"></div>
+      <span class="class-count">3 clases</span>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          07:00 – 09:00
+        </div>
+        <div class="card-course">Realidad nacional y mundial</div>
+        <div class="card-meta">
+          <span class="badge badge-practica">✦ Práctica</span>
+          <span class="badge badge-aula">T-101</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          09:00 – 11:00
+        </div>
+        <div class="card-course">Psicología y desarrollo humano</div>
+        <div class="card-meta">
+          <span class="badge badge-practica">✦ Práctica</span>
+          <span class="badge badge-aula">T-204</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-time">
+          <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          11:00 – 13:00
+        </div>
+        <div class="card-course">Metodología del trabajo universitario</div>
+        <div class="card-meta">
+          <span class="badge badge-teoria">● Teoría</span>
+          <span class="badge badge-aula">T-103</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="weekend-notice" id="weekendNotice">
+    <span class="big">🎉</span>
+    Hoy es fin de semana — ¡no hay clases!<br>
+    <small style="opacity:0.6;">Descansa y recarga energías.</small>
+  </div>
+
+  <footer>
+    OBSTETRICIA UNSCH · Grupo B &nbsp;·&nbsp; 14 clases semanales
+  </footer>
+</div>
+</body>
+<script src="java.js"></script>
+</html>
