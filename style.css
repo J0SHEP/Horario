@@ -459,3 +459,26 @@
     @media (min-width: 781px) {
       .cards { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     }
+
+    /* ── ENFOQUE AUTOMÁTICO: clase actual al frente, resto desenfocado ── */
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.4s ease, opacity 0.4s ease;
+}
+
+.card.current-focus {
+  transform: scale(1.03);
+  filter: none !important;
+  opacity: 1 !important;
+  z-index: 5;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  border-color: rgba(255,255,255,0.18);
+}
+body.light .card.current-focus {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+}
+
+.cards.has-focus .card:not(.current-focus) {
+  filter: blur(2.5px) saturate(0.7);
+  opacity: 0.45;
+  transform: scale(0.97);
+}
