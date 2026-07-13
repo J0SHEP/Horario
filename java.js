@@ -110,3 +110,45 @@
       card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
     });
   });
+  // ── ENFOQUE AUTOMÁTICO: resalta la clase que corresponde a la hora actual ──
+(function() {
+  function parseTimeRange(text) {
+    const match = text.match(/(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})/);
+    if (!match) return null;
+    const startMin = parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
+    const endMin = parseInt(match[3], 10) * 60 + parseInt(match[4], 10);
+    return [startMin, endMin];
+  }
+
+  function updateCurrentFocus() {
+    const dayMapFocus = { 1: 'lunes', 2: 'martes', 3: 'miercoles', 4: 'jueves', 5: 'viernes' };
+    const now = new Date();
+    const todayKeyFocus = dayMapFocus[now.getDay()] || null;
+    const nowMin = now.getHours() * 60 + now.getMinutes();
+
+    document.querySelectorAll('.day-section').forEach(section => {
+      const cardsWrap = section.querySelector('.cards');
+      const cards = section.querySelectorAll('.card');
+      let foundCurrent = false;
+
+      cards.forEach(card => card.classList.remove('current-focus'));
+
+      if (section.dataset.day === todayKeyFocus) {
+        cards.forEach(card => {
+          const timeEl = card.querySelector('.card-time');
+          if (!timeEl) return;
+          const range = parseTimeRange(timeEl.textContent);
+          if (range && nowMin >= range[0] && nowMin < range[1]) {
+            card.classList.add('current-focus');
+            foundCurrent = true;
+          }
+        });
+      }
+
+      if (cardsWrap) cardsWrap.classList.toggle('has-focus', foundCurrent);
+    });
+  }
+
+  updateCurrentFocus();
+  setInterval(updateCurrentFocus, 30000);
+})();
