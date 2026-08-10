@@ -110,45 +110,86 @@
       card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
     });
   });
-  // ── ENFOQUE AUTOMÁTICO: resalta la clase que corresponde a la hora actual ──
-(function() {
-  function parseTimeRange(text) {
-    const match = text.match(/(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})/);
-    if (!match) return null;
-    const startMin = parseInt(match[1], 10) * 60 + parseInt(match[2], 10);
-    const endMin = parseInt(match[3], 10) * 60 + parseInt(match[4], 10);
-    return [startMin, endMin];
+
+
+  // ─────────────────────────────────────────────
+// ── CURRENT CARD: enfoque según hora actual ──
+// ─────────────────────────────────────────────
+
+function timeToMinutes(time) {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+}
+
+function getCardTimeRange(card) {
+  const timeElement = card.querySelector('.card-time');
+
+  if (!timeElement) return null;
+
+  const text = timeElement.textContent.trim();
+
+  const match = text.match(
+    /(\d{1,2}):(\d{2})\s*[–-]\s*(\d{1,2}):(\d{2})/
+  );
+
+  if (!match) return null;
+
+  return {
+    start: Number(match[1]) * 60 + Number(match[2]),
+    end: Number(match[3]) * 60 + Number(match[4])
+  };
+}
+
+function updateCurrentCard() {
+  const now = new Date();
+
+  const currentDay = dayMap[now.getDay()];
+
+  if (!currentDay) {
+    document.querySelectorAll('.card').forEach(card => {
+      card.classList.remove('current-card', 'past-card');
+    });
+    return;
   }
 
-  function updateCurrentFocus() {
-    const dayMapFocus = { 1: 'lunes', 2: 'martes', 3: 'miercoles', 4: 'jueves', 5: 'viernes' };
-    const now = new Date();
-    const todayKeyFocus = dayMapFocus[now.getDay()] || null;
-    const nowMin = now.getHours() * 60 + now.getMinutes();
+  const currentMinutes =
+    now.getHours() * 60 + now.getMinutes();
 
-    document.querySelectorAll('.day-section').forEach(section => {
-      const cardsWrap = section.querySelector('.cards');
-      const cards = section.querySelectorAll('.card');
-      let foundCurrent = false;
+  document.querySelectorAll('.day-section').forEach(section => {
 
-      cards.forEach(card => card.classList.remove('current-focus'));
+    const sectionDay = section.dataset.day;
 
-      if (section.dataset.day === todayKeyFocus) {
-        cards.forEach(card => {
-          const timeEl = card.querySelector('.card-time');
-          if (!timeEl) return;
-          const range = parseTimeRange(timeEl.textContent);
-          if (range && nowMin >= range[0] && nowMin < range[1]) {
-            card.classList.add('current-focus');
-            foundCurrent = true;
-          }
-        });
+    section.querySelectorAll('.card').forEach(card => {
+
+      card.classList.remove(
+        'current-card',
+        'past-card'
+      );
+
+      if (sectionDay !== currentDay) return;
+
+      const range = getCardTimeRange(card);
+
+      if (!range) return;
+
+      // Clase que está ocurriendo ahora
+      if (
+        currentMinutes >= range.start &&
+        currentMinutes < range.end
+      ) {
+        card.classList.add('current-card');
       }
 
-      if (cardsWrap) cardsWrap.classList.toggle('has-focus', foundCurrent);
+      // Clase que ya terminó
+      else if (currentMinutes >= range.end) {
+        card.classList.add('past-card');
+      }
     });
-  }
+  });
+}
 
-  updateCurrentFocus();
-  setInterval(updateCurrentFocus, 30000);
-})();
+// Ejecutar al cargar
+updateCurrentCard();
+
+// Revisar cada minuto
+setInterval(updateCurrentCard, 60000);
