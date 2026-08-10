@@ -265,7 +265,7 @@
 
 /* Las tarjetas que no son la actual se desenfocan */
 .day-section:has(.current-card) .card:not(.current-card) {
-  filter: blur(1px);
+  filter: blur(0.9px);
   opacity: 0.45;
   transform: scale(0.98);
 }
