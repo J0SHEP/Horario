@@ -56,6 +56,8 @@
       box-shadow: 0 12px 32px var(--shadow);
     }
 
+
+
     body {
       background: var(--bg);
       color: var(--text);
@@ -251,7 +253,45 @@
       transform: translateY(-3px);
       box-shadow: 0 12px 32px rgba(0,0,0,0.4);
     }
+/* ── CURRENT CARD: enfoque automático según la hora ── */
 
+.card {
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    filter 0.35s ease,
+    opacity 0.35s ease;
+}
+
+/* Las tarjetas que no son la actual se desenfocan */
+.day-section:has(.current-card) .card:not(.current-card) {
+  filter: blur(1px);
+  opacity: 0.45;
+  transform: scale(0.98);
+}
+
+/* Tarjeta de la clase actual */
+.card.current-card {
+  filter: blur(0);
+  opacity: 1;
+  transform: scale(1.02);
+  z-index: 5;
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.12),
+    0 16px 40px rgba(0,0,0,0.45);
+}
+
+/* Evita que el hover quite el efecto de enfoque */
+.card.current-card:hover {
+  transform: scale(1.02) translateY(-3px);
+}
+
+/* Si no hay clase en curso, no aplicar blur */
+.day-section:not(:has(.current-card)) .card {
+  filter: none;
+  opacity: 1;
+  transform: none;
+}
     .card-time {
       font-size: 12px;
       font-weight: 500;
@@ -459,26 +499,3 @@
     @media (min-width: 781px) {
       .cards { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
     }
-
-    /* ── ENFOQUE AUTOMÁTICO: clase actual al frente, resto desenfocado ── */
-.card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.4s ease, opacity 0.4s ease;
-}
-
-.card.current-focus {
-  transform: scale(1.03);
-  filter: none !important;
-  opacity: 1 !important;
-  z-index: 5;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
-  border-color: rgba(255,255,255,0.18);
-}
-body.light .card.current-focus {
-  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
-}
-
-.cards.has-focus .card:not(.current-focus) {
-  filter: blur(2.5px) saturate(0.7);
-  opacity: 0.45;
-  transform: scale(0.97);
-}
